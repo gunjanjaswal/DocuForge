@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1544 500" width="1544" height="500" role="img" aria-label="DocuForge">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1544 500" width="1544" height="500" role="img" aria-label="Paperpane">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1544" y2="500" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#171d37"/>
@@ -31,7 +31,7 @@
   <rect width="1544" height="500" fill="url(#glow)"/>
 
   <!-- Wordmark -->
-  <text x="116" y="212" font-family="'Helvetica Neue','Arial',sans-serif" font-weight="800" font-size="104" letter-spacing="-3" fill="#ffffff">Docu<tspan fill="#f8505f">Forge</tspan></text>
+  <text x="116" y="212" font-family="'Helvetica Neue','Arial',sans-serif" font-weight="800" font-size="104" letter-spacing="-3" fill="#ffffff">Paper<tspan fill="#f8505f">pane</tspan></text>
 
   <!-- Tagline -->
   <text x="120" y="292" font-family="'Helvetica Neue','Arial',sans-serif" font-weight="600" font-size="37" fill="#c7cfe2">Embed a PDF right inside your posts and pages.</text>

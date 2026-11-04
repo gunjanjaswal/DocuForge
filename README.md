@@ -1,12 +1,12 @@
 <div align="center">
 
-# 📄 DocuForge
+# 📄 Paperpane
 
 ### Embed PDFs directly inside your WordPress posts and pages
 
 A lightweight PDF embed plugin with a Gutenberg block **and** a shortcode. It uses the browser's own PDF viewer, so there's no bulky library to load and nothing ever leaves your server.
 
-[![Version](https://img.shields.io/badge/version-1.1.0-2563eb.svg?style=for-the-badge)](https://github.com/gunjanjaswal/DocuForge/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-2563eb.svg?style=for-the-badge)](https://github.com/gunjanjaswal/Paperpane/releases)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%E2%80%937.1-21759b.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4.svg?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-3fb950.svg?style=for-the-badge)](LICENSE)
@@ -17,7 +17,7 @@ A lightweight PDF embed plugin with a Gutenberg block **and** a shortcode. It us
 
 ## ✨ What it does
 
-Most PDF embeds either drop a plain download link, or pull in a megabyte of JavaScript to render something the browser already renders perfectly well. DocuForge takes the lighter road: it points the browser at your file and lets its built-in viewer do the work. You pick a PDF, set a height, and your readers scroll through it without ever leaving the page.
+Most PDF embeds either drop a plain download link, or pull in a megabyte of JavaScript to render something the browser already renders perfectly well. Paperpane takes the lighter road: it points the browser at your file and lets its built-in viewer do the work. You pick a PDF, set a height, and your readers scroll through it without ever leaving the page.
 
 No account, no API key, no external request. The file stays on your own site.
 
@@ -25,8 +25,8 @@ No account, no API key, no external request. The file stays on your own site.
 
 | | |
 |---|---|
-| 🧱 **Block editor** | A **DocuForge** block with a live preview while you set it up. |
-| 🔤 **Shortcode** | `[docuforge]` for the classic editor, widgets, or template files. |
+| 🧱 **Block editor** | A **Paperpane** block with a live preview while you set it up. |
+| 🔤 **Shortcode** | `[paperpane]` for the classic editor, widgets, or template files. |
 | 📐 **Adjustable height** | Set the viewer to any pixel height you like. |
 | 🛠️ **Toolbar toggle** | Show or hide the viewer's built-in toolbar. |
 | 🖥️ **Full-width read** | Fits the page to the viewer width and hides the thumbnail sidebar. |
@@ -39,14 +39,14 @@ No account, no API key, no external request. The file stays on your own site.
 **From your dashboard**
 
 1. Go to **Plugins → Add New → Upload Plugin**.
-2. Choose `docuforge.zip` and click **Install Now**.
+2. Choose `paperpane.zip` and click **Install Now**.
 3. Click **Activate**.
 
 **From this repository**
 
 1. Download the latest release, or clone the repo.
-2. Put the folder in `wp-content/plugins/` as `docuforge`.
-3. Activate **DocuForge** on the Plugins screen.
+2. Put the folder in `wp-content/plugins/` as `paperpane`.
+3. Activate **Paperpane** on the Plugins screen.
 
 There is no settings page, so you can start embedding right away.
 
@@ -55,7 +55,7 @@ There is no settings page, so you can start embedding right away.
 ### Embed a PDF with the block
 
 1. Edit a post or page.
-2. Click the **+** block inserter and search for **DocuForge**.
+2. Click the **+** block inserter and search for **Paperpane**.
 3. Add the block, then click **Upload** or **Media Library** and pick your PDF.
 4. In the block sidebar, set the **viewer height**, show or hide the **toolbar**, and add an **accessible title** if you want one.
 5. Use **Replace PDF** in the block toolbar any time you need to swap the file.
@@ -70,19 +70,19 @@ Reach for the shortcode in the classic editor, a widget, or a template file.
 Embed a file from the Media Library by its attachment ID:
 
 ```text
-[docuforge id="123"]
+[paperpane id="123"]
 ```
 
 Embed any PDF by URL, taller and with the toolbar hidden:
 
 ```text
-[docuforge url="https://example.com/files/report.pdf" height="800" toolbar="0"]
+[paperpane url="https://example.com/files/report.pdf" height="800" toolbar="0"]
 ```
 
 Call it from a template:
 
 ```php
-<?php echo do_shortcode( '[docuforge id="123"]' ); ?>
+<?php echo do_shortcode( '[paperpane id="123"]' ); ?>
 ```
 
 > The former `[pdf-embed-forge]` and `[pdf-forge]` shortcodes still work as aliases, so anything built before the rename keeps running.
@@ -121,26 +121,26 @@ Built to the [WordPress.org plugin guidelines](https://developer.wordpress.org/p
 
 ## 🛠️ Development
 
-The block is written in plain `wp.element` calls with no build step, so the source in `assets/js/block.js` is exactly what runs. Clone the repo into `wp-content/plugins/docuforge` and start editing.
+The block is written in plain `wp.element` calls with no build step, so the source in `assets/js/block.js` is exactly what runs. Clone the repo into `wp-content/plugins/paperpane` and start editing.
 
 ```text
-docuforge/
-├── docuforge.php               # Plugin bootstrap
+paperpane/
+├── paperpane.php               # Plugin bootstrap
 ├── readme.txt                        # WordPress.org readme
 ├── includes/
-│   └── class-docuforge.php     # Block + shortcode + shared renderer
+│   └── class-paperpane.php     # Block + shortcode + shared renderer
 ├── block/
 │   └── block.json                    # Block metadata
 ├── languages/
-│   └── docuforge.pot           # Translation template
+│   └── paperpane.pot           # Translation template
 └── assets/
-    ├── css/docuforge.css       # Front-end + editor styles
+    ├── css/paperpane.css       # Front-end + editor styles
     └── js/block.js                   # Block editor (no build required)
 ```
 
 ## 💛 Support
 
-If DocuForge saves you some time, a coffee is always appreciated.
+If Paperpane saves you some time, a coffee is always appreciated.
 
 <a href="https://ko-fi.com/gunjanjaswal"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-ff5e5b.svg?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
 

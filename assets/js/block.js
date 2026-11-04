@@ -1,5 +1,5 @@
 /**
- * DocuForge block editor.
+ * Paperpane block editor.
  *
  * Dynamic block (rendered in PHP), authored without a build step using
  * wp.element.createElement so it runs straight from source.
@@ -25,7 +25,7 @@
 	var ToolbarGroup = cmp.ToolbarGroup;
 	var ToolbarButton = cmp.ToolbarButton;
 
-	blocks.registerBlockType( 'docuforge/embed', {
+	blocks.registerBlockType( 'paperpane/embed', {
 		edit: function ( props ) {
 			var a = props.attributes;
 			var setA = props.setAttributes;
@@ -44,9 +44,9 @@
 				{},
 				el(
 					PanelBody,
-					{ title: __( 'PDF settings', 'docuforge' ), initialOpen: true },
+					{ title: __( 'PDF settings', 'paperpane' ), initialOpen: true },
 					el( RangeControl, {
-						label: __( 'Viewer height (px)', 'docuforge' ),
+						label: __( 'Viewer height (px)', 'paperpane' ),
 						value: a.height,
 						min: 200,
 						max: 1500,
@@ -56,15 +56,15 @@
 						}
 					} ),
 					el( ToggleControl, {
-						label: __( 'Show PDF toolbar', 'docuforge' ),
+						label: __( 'Show PDF toolbar', 'paperpane' ),
 						checked: a.toolbar,
 						onChange: function ( v ) {
 							setA( { toolbar: v } );
 						}
 					} ),
 					el( TextControl, {
-						label: __( 'Accessible title', 'docuforge' ),
-						help: __( 'Describes the PDF for screen readers.', 'docuforge' ),
+						label: __( 'Accessible title', 'paperpane' ),
+						help: __( 'Describes the PDF for screen readers.', 'paperpane' ),
 						value: a.title,
 						onChange: function ( v ) {
 							setA( { title: v } );
@@ -81,8 +81,8 @@
 					el( MediaPlaceholder, {
 						icon: 'media-document',
 						labels: {
-							title: __( 'DocuForge PDF Embed', 'docuforge' ),
-							instructions: __( 'Upload a PDF or choose one from your Media Library.', 'docuforge' )
+							title: __( 'Paperpane PDF Embed', 'paperpane' ),
+							instructions: __( 'Upload a PDF or choose one from your Media Library.', 'paperpane' )
 						},
 						accept: 'application/pdf',
 						allowedTypes: [ 'application/pdf' ],
@@ -108,7 +108,7 @@
 								return el(
 									ToolbarButton,
 									{ onClick: o.open },
-									__( 'Replace PDF', 'docuforge' )
+									__( 'Replace PDF', 'paperpane' )
 								);
 							}
 						} )
@@ -122,9 +122,9 @@
 				inspector,
 				controls,
 				el( 'iframe', {
-					className: 'docuforge__frame',
+					className: 'paperpane__frame',
 					src: a.url,
-					title: a.title || __( 'Embedded PDF', 'docuforge' ),
+					title: a.title || __( 'Embedded PDF', 'paperpane' ),
 					style: {
 						width: '100%',
 						height: ( a.height || 600 ) + 'px',
