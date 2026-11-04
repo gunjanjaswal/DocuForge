@@ -20,7 +20,7 @@ It uses the browser's own PDF viewer, so there is no heavy library to load and n
 **What you get**
 
 * A "Paperpane" block for the editor, with a live preview while you set it up.
-* A `[paperpane]` shortcode for the classic editor, widgets, or anywhere shortcodes run.
+* A `[pp-pdf-embed]` shortcode for the classic editor, widgets, or anywhere shortcodes run.
 * Control over the viewer height and the built-in toolbar.
 * Fits the page to the viewer width and hides the thumbnail sidebar for a clean, full-width read.
 * Responsive by default, so it fits phones as well as wide desktop layouts.
@@ -60,15 +60,15 @@ Use the shortcode when you are in the classic editor, a widget, or a template fi
 
 Embed a file from your Media Library by its attachment ID:
 
-`[paperpane id="123"]`
+`[pp-pdf-embed id="123"]`
 
 Embed any PDF by its URL, taller and with the toolbar hidden:
 
-`[paperpane url="https://example.com/files/report.pdf" height="800" toolbar="0"]`
+`[pp-pdf-embed url="https://example.com/files/report.pdf" height="800" toolbar="0"]`
 
 Call it from a template with `do_shortcode()`:
 
-`<?php echo do_shortcode( '[paperpane id="123"]' ); ?>`
+`<?php echo do_shortcode( '[pp-pdf-embed id="123"]' ); ?>`
 
 **Finding a PDF's attachment ID**
 
@@ -82,7 +82,7 @@ Open **Media → Library**, click the PDF, and read the `item=` number in the UR
 * `toolbar` — `1` to show the viewer toolbar, `0` to hide it. Default `1`.
 * `title` — Accessible title for the viewer (read by screen readers).
 
-The former `[pdf-embed-forge]` and `[pdf-forge]` shortcodes still work as aliases, so anything you built before the rename keeps running.
+The `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes also work as aliases, so anything you built before keeps running.
 
 == Frequently Asked Questions ==
 
@@ -114,7 +114,7 @@ No. Everything is configured per embed, on the block or the shortcode.
 == Changelog ==
 
 = 1.2.0 =
-* Renamed the plugin to Paperpane, with the `[paperpane]` shortcode and the Paperpane PDF Embed block. The former `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the older blocks keep working, so existing embeds are unaffected.
+* Renamed the plugin to Paperpane, with the `[pp-pdf-embed]` shortcode and the Paperpane PDF Embed block. The `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the older blocks also work, so existing embeds are unaffected.
 
 = 1.1.0 =
 * Renamed the plugin to DocuForge, with the `[docuforge]` shortcode and a DocuForge PDF block. The former `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the old block keep working.

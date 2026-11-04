@@ -35,7 +35,8 @@ final class Paperpane {
 	 */
 	private function __construct() {
 		add_action( 'init', array( $this, 'register' ) );
-		add_shortcode( 'paperpane', array( $this, 'render' ) );
+		add_shortcode( 'pp-pdf-embed', array( $this, 'render' ) );
+		add_shortcode( 'paperpane', array( $this, 'render' ) );       // Alias.
 		add_shortcode( 'docuforge', array( $this, 'render' ) );       // Back-compat alias (former name).
 		add_shortcode( 'pdf-embed-forge', array( $this, 'render' ) ); // Back-compat alias (earlier name).
 		add_shortcode( 'pdf-forge', array( $this, 'render' ) );       // Back-compat alias (original name).
@@ -154,7 +155,7 @@ final class Paperpane {
 				'title'   => '',
 			),
 			$atts,
-			'paperpane'
+			'pp-pdf-embed'
 		);
 
 		$url = $a['url'] ? $a['url'] : ( $a['id'] ? wp_get_attachment_url( (int) $a['id'] ) : '' );

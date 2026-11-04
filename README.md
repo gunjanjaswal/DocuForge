@@ -26,7 +26,7 @@ No account, no API key, no external request. The file stays on your own site.
 | | |
 |---|---|
 | 🧱 **Block editor** | A **Paperpane** block with a live preview while you set it up. |
-| 🔤 **Shortcode** | `[paperpane]` for the classic editor, widgets, or template files. |
+| 🔤 **Shortcode** | `[pp-pdf-embed]` for the classic editor, widgets, or template files. |
 | 📐 **Adjustable height** | Set the viewer to any pixel height you like. |
 | 🛠️ **Toolbar toggle** | Show or hide the viewer's built-in toolbar. |
 | 🖥️ **Full-width read** | Fits the page to the viewer width and hides the thumbnail sidebar. |
@@ -70,22 +70,22 @@ Reach for the shortcode in the classic editor, a widget, or a template file.
 Embed a file from the Media Library by its attachment ID:
 
 ```text
-[paperpane id="123"]
+[pp-pdf-embed id="123"]
 ```
 
 Embed any PDF by URL, taller and with the toolbar hidden:
 
 ```text
-[paperpane url="https://example.com/files/report.pdf" height="800" toolbar="0"]
+[pp-pdf-embed url="https://example.com/files/report.pdf" height="800" toolbar="0"]
 ```
 
 Call it from a template:
 
 ```php
-<?php echo do_shortcode( '[paperpane id="123"]' ); ?>
+<?php echo do_shortcode( '[pp-pdf-embed id="123"]' ); ?>
 ```
 
-> The former `[pdf-embed-forge]` and `[pdf-forge]` shortcodes still work as aliases, so anything built before the rename keeps running.
+> The `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes also work as aliases, so anything built before keeps running.
 
 ### Shortcode attributes
 
