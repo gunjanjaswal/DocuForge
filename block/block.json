@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "paperpane/embed",
-	"title": "Paperpane - PDF Embed",
+	"title": "Paperpane PDF Embed",
 	"category": "media",
 	"icon": "media-document",
 	"description": "Embed a PDF file directly in your post with an inline viewer.",

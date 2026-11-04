@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Paperpane - PDF Embed Viewer
+ * Plugin Name:       Paperpane PDF Embed Viewer
  * Plugin URI:        https://github.com/gunjanjaswal/Paperpane
  * Description:       Embed a PDF on your site with a block or a shortcode. A clean, responsive, full-width inline viewer that uses the browser's own PDF reader. No external services.
  * Version:           1.2.0

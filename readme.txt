@@ -1,4 +1,4 @@
-=== Paperpane - PDF Embed Viewer ===
+=== Paperpane PDF Embed Viewer ===
 Contributors: gunjanjaswal
 Donate link: https://ko-fi.com/gunjanjaswal
 Tags: pdf, embed, pdf viewer, document, shortcode
