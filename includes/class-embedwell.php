@@ -2,26 +2,26 @@
 /**
  * Core plugin class: registers the block, the shortcode, and the shared renderer.
  *
- * @package Paperpane
+ * @package Embedwell
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-final class Paperpane {
+final class Embedwell {
 
 	/**
 	 * Singleton instance.
 	 *
-	 * @var Paperpane|null
+	 * @var Embedwell|null
 	 */
 	private static $instance = null;
 
 	/**
 	 * Boot the plugin (singleton).
 	 *
-	 * @return Paperpane
+	 * @return Embedwell
 	 */
 	public static function instance() {
 		if ( null === self::$instance ) {
@@ -35,8 +35,10 @@ final class Paperpane {
 	 */
 	private function __construct() {
 		add_action( 'init', array( $this, 'register' ) );
-		add_shortcode( 'pp-pdf-embed', array( $this, 'render' ) );
-		add_shortcode( 'paperpane', array( $this, 'render' ) );       // Alias.
+		add_shortcode( 'ew-pdf-embed', array( $this, 'render' ) );
+		add_shortcode( 'embedwell', array( $this, 'render' ) );       // Alias.
+		add_shortcode( 'pp-pdf-embed', array( $this, 'render' ) );    // Back-compat alias (former name).
+		add_shortcode( 'paperpane', array( $this, 'render' ) );       // Back-compat alias (former name).
 		add_shortcode( 'docuforge', array( $this, 'render' ) );       // Back-compat alias (former name).
 		add_shortcode( 'pdf-embed-forge', array( $this, 'render' ) ); // Back-compat alias (earlier name).
 		add_shortcode( 'pdf-forge', array( $this, 'render' ) );       // Back-compat alias (original name).
@@ -48,32 +50,32 @@ final class Paperpane {
 	 */
 	public function register() {
 		wp_register_style(
-			'paperpane',
-			PAPERPANE_URL . 'assets/css/paperpane.css',
+			'embedwell',
+			EMBEDWELL_URL . 'assets/css/embedwell.css',
 			array(),
-			PAPERPANE_VERSION
+			EMBEDWELL_VERSION
 		);
 
 		wp_register_script(
-			'paperpane-editor',
-			PAPERPANE_URL . 'assets/js/block.js',
+			'embedwell-editor',
+			EMBEDWELL_URL . 'assets/js/block.js',
 			array( 'wp-blocks', 'wp-block-editor', 'wp-element', 'wp-components', 'wp-i18n' ),
-			PAPERPANE_VERSION,
+			EMBEDWELL_VERSION,
 			true
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'paperpane-editor', 'paperpane', PAPERPANE_DIR . 'languages' );
+			wp_set_script_translations( 'embedwell-editor', 'embedwell', EMBEDWELL_DIR . 'languages' );
 		}
 
 		if ( function_exists( 'register_block_type' ) ) {
 			register_block_type(
-				PAPERPANE_DIR . 'block',
+				EMBEDWELL_DIR . 'block',
 				array( 'render_callback' => array( $this, 'render_block' ) )
 			);
 
 			// Back-compat: render posts saved with a former block name without
-			// showing it in the inserter. New posts use the paperpane/embed block.
+			// showing it in the inserter. New posts use the embedwell/embed block.
 			$legacy_attributes = array(
 				'id'      => array(
 					'type'    => 'number',
@@ -97,7 +99,7 @@ final class Paperpane {
 				),
 			);
 
-			foreach ( array( 'docuforge/embed', 'pdf-embed-forge/embed' ) as $legacy_block ) {
+			foreach ( array( 'paperpane/embed', 'docuforge/embed', 'pdf-embed-forge/embed' ) as $legacy_block ) {
 				if ( WP_Block_Type_Registry::get_instance()->is_registered( $legacy_block ) ) {
 					continue;
 				}
@@ -155,7 +157,7 @@ final class Paperpane {
 				'title'   => '',
 			),
 			$atts,
-			'pp-pdf-embed'
+			'ew-pdf-embed'
 		);
 
 		$url = $a['url'] ? $a['url'] : ( $a['id'] ? wp_get_attachment_url( (int) $a['id'] ) : '' );
@@ -170,7 +172,7 @@ final class Paperpane {
 			return '';
 		}
 
-		wp_enqueue_style( 'paperpane' );
+		wp_enqueue_style( 'embedwell' );
 
 		$height = is_numeric( $a['height'] ) ? (int) $a['height'] . 'px' : preg_replace( '/[^0-9a-z%.]/i', '', (string) $a['height'] );
 		if ( '' === $height ) {
@@ -192,10 +194,10 @@ final class Paperpane {
 			$title = get_the_title( (int) $a['id'] );
 		}
 		if ( ! $title ) {
-			$title = __( 'Embedded PDF', 'paperpane' );
+			$title = __( 'Embedded PDF', 'embedwell' );
 		}
 
-		$wrap_class = 'paperpane';
+		$wrap_class = 'embedwell';
 		if ( $extra_class ) {
 			$wrap_class .= ' ' . $extra_class;
 		}
@@ -207,7 +209,7 @@ final class Paperpane {
 			'large',
 			false,
 			array(
-				'class'   => 'paperpane__thumb',
+				'class'   => 'embedwell__thumb',
 				'alt'     => '',
 				'loading' => 'lazy',
 			)
@@ -216,28 +218,28 @@ final class Paperpane {
 		ob_start();
 		?>
 		<div class="<?php echo esc_attr( $wrap_class ); ?>">
-			<div class="paperpane__frame-wrap" style="height:<?php echo esc_attr( $height ); ?>">
-				<iframe class="paperpane__frame" src="<?php echo esc_url( $src ); ?>" title="<?php echo esc_attr( $title ); ?>" loading="lazy"></iframe>
+			<div class="embedwell__frame-wrap" style="height:<?php echo esc_attr( $height ); ?>">
+				<iframe class="embedwell__frame" src="<?php echo esc_url( $src ); ?>" title="<?php echo esc_attr( $title ); ?>" loading="lazy"></iframe>
 			</div>
-			<a class="paperpane__open" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener">
-				<span class="paperpane__preview">
+			<a class="embedwell__open" href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener">
+				<span class="embedwell__preview">
 					<?php
 					if ( $thumb ) {
 						echo $thumb; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_get_attachment_image() returns safe markup.
 					} else {
 						?>
-						<span class="paperpane__preview-fallback">
+						<span class="embedwell__preview-fallback">
 							<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#e23b4e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
 						</span>
 						<?php
 					}
 					?>
-					<span class="paperpane__cta">
+					<span class="embedwell__cta">
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-						<?php esc_html_e( 'View full screen', 'paperpane' ); ?>
+						<?php esc_html_e( 'View full screen', 'embedwell' ); ?>
 					</span>
 				</span>
-				<span class="paperpane__open-title"><?php echo esc_html( $title ); ?></span>
+				<span class="embedwell__open-title"><?php echo esc_html( $title ); ?></span>
 			</a>
 		</div>
 		<?php
@@ -252,12 +254,12 @@ final class Paperpane {
 	 * @return string[]
 	 */
 	public function row_meta( $links, $file ) {
-		if ( plugin_basename( PAPERPANE_FILE ) !== $file ) {
+		if ( plugin_basename( EMBEDWELL_FILE ) !== $file ) {
 			return $links;
 		}
 
-		$links[] = '<a href="' . esc_url( 'https://ko-fi.com/gunjanjaswal' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support on Ko-fi', 'paperpane' ) . '</a>';
-		$links[] = '<a href="' . esc_url( 'mailto:hello@gunjanjaswal.me' ) . '">' . esc_html__( 'Contact developer', 'paperpane' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://ko-fi.com/gunjanjaswal' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support on Ko-fi', 'embedwell' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'mailto:hello@gunjanjaswal.me' ) . '">' . esc_html__( 'Contact developer', 'embedwell' ) . '</a>';
 
 		return $links;
 	}

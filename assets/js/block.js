@@ -1,5 +1,5 @@
 /**
- * Paperpane block editor.
+ * Embedwell block editor.
  *
  * Dynamic block (rendered in PHP), authored without a build step using
  * wp.element.createElement so it runs straight from source.
@@ -25,7 +25,7 @@
 	var ToolbarGroup = cmp.ToolbarGroup;
 	var ToolbarButton = cmp.ToolbarButton;
 
-	blocks.registerBlockType( 'paperpane/embed', {
+	blocks.registerBlockType( 'embedwell/embed', {
 		edit: function ( props ) {
 			var a = props.attributes;
 			var setA = props.setAttributes;
@@ -44,9 +44,9 @@
 				{},
 				el(
 					PanelBody,
-					{ title: __( 'PDF settings', 'paperpane' ), initialOpen: true },
+					{ title: __( 'PDF settings', 'embedwell' ), initialOpen: true },
 					el( RangeControl, {
-						label: __( 'Viewer height (px)', 'paperpane' ),
+						label: __( 'Viewer height (px)', 'embedwell' ),
 						value: a.height,
 						min: 200,
 						max: 1500,
@@ -56,15 +56,15 @@
 						}
 					} ),
 					el( ToggleControl, {
-						label: __( 'Show PDF toolbar', 'paperpane' ),
+						label: __( 'Show PDF toolbar', 'embedwell' ),
 						checked: a.toolbar,
 						onChange: function ( v ) {
 							setA( { toolbar: v } );
 						}
 					} ),
 					el( TextControl, {
-						label: __( 'Accessible title', 'paperpane' ),
-						help: __( 'Describes the PDF for screen readers.', 'paperpane' ),
+						label: __( 'Accessible title', 'embedwell' ),
+						help: __( 'Describes the PDF for screen readers.', 'embedwell' ),
 						value: a.title,
 						onChange: function ( v ) {
 							setA( { title: v } );
@@ -81,8 +81,8 @@
 					el( MediaPlaceholder, {
 						icon: 'media-document',
 						labels: {
-							title: __( 'Paperpane PDF Embed', 'paperpane' ),
-							instructions: __( 'Upload a PDF or choose one from your Media Library.', 'paperpane' )
+							title: __( 'Embedwell PDF Embed', 'embedwell' ),
+							instructions: __( 'Upload a PDF or choose one from your Media Library.', 'embedwell' )
 						},
 						accept: 'application/pdf',
 						allowedTypes: [ 'application/pdf' ],
@@ -108,7 +108,7 @@
 								return el(
 									ToolbarButton,
 									{ onClick: o.open },
-									__( 'Replace PDF', 'paperpane' )
+									__( 'Replace PDF', 'embedwell' )
 								);
 							}
 						} )
@@ -122,9 +122,9 @@
 				inspector,
 				controls,
 				el( 'iframe', {
-					className: 'paperpane__frame',
+					className: 'embedwell__frame',
 					src: a.url,
-					title: a.title || __( 'Embedded PDF', 'paperpane' ),
+					title: a.title || __( 'Embedded PDF', 'embedwell' ),
 					style: {
 						width: '100%',
 						height: ( a.height || 600 ) + 'px',

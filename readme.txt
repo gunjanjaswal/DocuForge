@@ -1,11 +1,11 @@
-=== Paperpane PDF Embed Viewer ===
+=== Embedwell PDF Embed Viewer ===
 Contributors: gunjanjaswal
 Donate link: https://ko-fi.com/gunjanjaswal
 Tags: pdf, embed, pdf viewer, document, shortcode
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,14 +13,14 @@ Embed a PDF right inside a post or page with a clean, responsive, full-width vie
 
 == Description ==
 
-Paperpane drops a PDF straight into your content so readers can scroll through it without leaving the page. Pick a file from your Media Library (or paste a URL), choose a height, and you are done.
+Embedwell drops a PDF straight into your content so readers can scroll through it without leaving the page. Pick a file from your Media Library (or paste a URL), choose a height, and you are done.
 
 It uses the browser's own PDF viewer, so there is no heavy library to load and nothing is sent to an outside service. Your files stay on your own site.
 
 **What you get**
 
-* A "Paperpane" block for the editor, with a live preview while you set it up.
-* A `[pp-pdf-embed]` shortcode for the classic editor, widgets, or anywhere shortcodes run.
+* An "Embedwell" block for the editor, with a live preview while you set it up.
+* An `[ew-pdf-embed]` shortcode for the classic editor, widgets, or anywhere shortcodes run.
 * Control over the viewer height and the built-in toolbar.
 * Fits the page to the viewer width and hides the thumbnail sidebar for a clean, full-width read.
 * Responsive by default, so it fits phones as well as wide desktop layouts.
@@ -31,13 +31,13 @@ It uses the browser's own PDF viewer, so there is no heavy library to load and n
 **From your dashboard**
 
 1. Go to **Plugins → Add New → Upload Plugin**.
-2. Choose `paperpane.zip` and click **Install Now**.
+2. Choose `embedwell.zip` and click **Install Now**.
 3. Click **Activate**.
 
 **Manually over FTP/SFTP**
 
-1. Unzip the download and upload the `paperpane` folder to `/wp-content/plugins/`.
-2. Go to **Plugins** in WordPress and activate **Paperpane**.
+1. Unzip the download and upload the `embedwell` folder to `/wp-content/plugins/`.
+2. Go to **Plugins** in WordPress and activate **Embedwell**.
 
 There is no settings page. Once it is active you can add PDFs straight away.
 
@@ -46,7 +46,7 @@ There is no settings page. Once it is active you can add PDFs straight away.
 **Embed a PDF with the block**
 
 1. Edit a post or page.
-2. Click the **+** (block inserter) and search for **Paperpane**.
+2. Click the **+** (block inserter) and search for **Embedwell**.
 3. Add the block, then click **Upload** or **Media Library** and pick your PDF.
 4. In the block sidebar, set the **viewer height**, show or hide the **toolbar**, and type an **accessible title** if you like.
 5. Use the toolbar's **Replace PDF** button any time you want to swap the file.
@@ -60,15 +60,15 @@ Use the shortcode when you are in the classic editor, a widget, or a template fi
 
 Embed a file from your Media Library by its attachment ID:
 
-`[pp-pdf-embed id="123"]`
+`[ew-pdf-embed id="123"]`
 
 Embed any PDF by its URL, taller and with the toolbar hidden:
 
-`[pp-pdf-embed url="https://example.com/files/report.pdf" height="800" toolbar="0"]`
+`[ew-pdf-embed url="https://example.com/files/report.pdf" height="800" toolbar="0"]`
 
 Call it from a template with `do_shortcode()`:
 
-`<?php echo do_shortcode( '[pp-pdf-embed id="123"]' ); ?>`
+`<?php echo do_shortcode( '[ew-pdf-embed id="123"]' ); ?>`
 
 **Finding a PDF's attachment ID**
 
@@ -82,7 +82,7 @@ Open **Media → Library**, click the PDF, and read the `item=` number in the UR
 * `toolbar` — `1` to show the viewer toolbar, `0` to hide it. Default `1`.
 * `title` — Accessible title for the viewer (read by screen readers).
 
-The `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes also work as aliases, so anything you built before keeps running.
+The `[embedwell]`, `[pp-pdf-embed]`, `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes also work as aliases, so anything you built before keeps running.
 
 == Frequently Asked Questions ==
 
@@ -113,8 +113,11 @@ No. Everything is configured per embed, on the block or the shortcode.
 
 == Changelog ==
 
+= 1.3.0 =
+* Renamed the plugin to Embedwell, with the `[ew-pdf-embed]` shortcode and the Embedwell PDF Embed block. The `[embedwell]`, `[pp-pdf-embed]`, `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the older blocks also work, so existing embeds are unaffected.
+
 = 1.2.0 =
-* Renamed the plugin to Paperpane, with the `[pp-pdf-embed]` shortcode and the Paperpane PDF Embed block. The `[paperpane]`, `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the older blocks also work, so existing embeds are unaffected.
+* Renamed the plugin to Paperpane, with the `[pp-pdf-embed]` shortcode and the Paperpane PDF Embed block. The former `[docuforge]`, `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the older blocks keep working.
 
 = 1.1.0 =
 * Renamed the plugin to DocuForge, with the `[docuforge]` shortcode and a DocuForge PDF block. The former `[pdf-embed-forge]` and `[pdf-forge]` shortcodes and the old block keep working.
@@ -144,6 +147,9 @@ No. Everything is configured per embed, on the block or the shortcode.
 
 == Upgrade Notice ==
 
+= 1.3.0 =
+Renamed to Embedwell. Your existing embeds keep working.
+
 = 1.2.0 =
 Renamed to Paperpane. Your existing embeds keep working.
 
@@ -160,7 +166,7 @@ Mobile now shows a first-page preview with a View full screen button.
 Better mobile experience: a tap-to-open card on phones.
 
 = 1.0.2 =
-Renamed to Paperpane. Your existing embeds keep working.
+Renamed to PDF Embed Forge. Your existing embeds keep working.
 
 = 1.0.1 =
 Cleaner full-width viewer with the thumbnail sidebar hidden.
